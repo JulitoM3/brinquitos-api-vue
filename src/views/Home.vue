@@ -1,6 +1,8 @@
 <template>
-  <div class="home">
-    <HomeComponent />
+  <div>
+    <div class="home">
+      <HomeComponent />
+    </div>
   </div>
 </template>
 
@@ -8,10 +10,11 @@
 // @ is an alias to /src
 
 import HomeComponent from '@/components/HomeComponent.vue'
+
 export default {
   name: 'Home',
   components: {
     HomeComponent,
-  },
+    },
 }
 </script>
