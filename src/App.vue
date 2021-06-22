@@ -30,7 +30,7 @@
                     <router-link :to="{ name: 'Contact' }">Contacto</router-link>
                   </li>
                   <li class="right">
-                    <a href="../vistas/login.php">Inicia sesión</a>
+                    <router-link :to="{ name : 'Login' }">Inicia sesión</router-link>
                   </li>
                 </ul>
               </nav>

@@ -1,8 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Contact from '../views/Contact.vue'
 import Services from '../views/Services.vue'
 import ServicesShow from '../views/ServicesShow.vue'
+/***
+ * rutas autorizacion
+ */
+import Login from '../views/auth/Login.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -11,6 +16,16 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact,
   },
   {
     path: '/about',
@@ -22,12 +37,12 @@ const routes = [
       import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
   {
-    path: '/servicios',
+    path: '/services',
     name: 'Services',
     component: Services,
   },
   {
-    path: '/servicios/:name',
+    path: '/services/:name',
     name: 'Services-Show',
     component: ServicesShow,
     props: true
