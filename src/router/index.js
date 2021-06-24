@@ -8,6 +8,12 @@ import ServicesShow from '../views/ServicesShow.vue'
  * rutas autorizacion
  */
 import Login from '../views/auth/Login.vue'
+
+/**
+ * rutas admin
+ */
+
+import AdminHome from '../views/admin/Home.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -46,6 +52,11 @@ const routes = [
     name: 'Services-Show',
     component: ServicesShow,
     props: true
+  },
+  {
+    path:'/administracion',
+    name:'AdminHome',
+    component : AdminHome
   }
 ]
 
