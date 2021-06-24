@@ -1,7 +1,11 @@
 <template>
   <div>
       <b-card>
-          <b-form @submit="login">
+         <b-alert show variant="danger" v-if="hasErrors">
+             {{ error }}
+         </b-alert>
+
+<b-form @submit.prevent="login">
             <label>Correo:</label>
             <b-form-input placeholder="ejemplo@gmail.com" v-model="form.email" type="email"></b-form-input>
             <br>
@@ -16,19 +20,31 @@
 </template>
 
 <script>
+    import AxiosService from '@/API-Services/AxiosService.js'
 export default {
 data(){
     return {
         form:{
-            email : '',
-            password : '',
-        }
+            email : 'admin@brinquitos.com',
+            password : '12345678',
+        },
+        hasErrors : false,
+        error : ''
     }
 },
 methods:{
-    login(event){
-event.preventDefault()
-
+    login(){
+        AxiosService.login(this.form.email, this.form.password)
+        .then((response)=>{
+            console.log(response.data)
+            localStorage.setItem('token', response.data.access_token)
+            localStorage.setItem('user', response.data.name)
+        })
+        .catch((error) => {
+            let responseError = error.response.data.error
+            this.hasErrors = true
+            this.error = responseError
+        })
     }
 }
 }
